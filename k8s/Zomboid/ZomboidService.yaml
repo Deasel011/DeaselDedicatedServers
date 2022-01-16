@@ -1,0 +1,70 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: zomboid
+  labels:
+    app: zomboid
+spec:
+  ports:
+    - port: 8766
+      protocol: UDP
+      name: "zomboid-a"
+      targetPort: 8766
+    - port: 8767
+      protocol: UDP
+      name: "zomboid-b"
+      targetPort: 8767
+    - port: 16261
+      protocol: UDP
+      name: "zomboid-c"
+      targetPort: 16261
+    - port: 16262
+      protocol: TCP
+      name: "zomboid-d"
+      targetPort: 16262
+    - port: 16263
+      protocol: TCP
+      name: "zomboid-e"
+      targetPort: 16263
+    - port: 16264
+      protocol: TCP
+      name: "zomboid-f"
+      targetPort: 16264
+    - port: 16265
+      protocol: TCP
+      name: "zomboid-g"
+      targetPort: 16265
+    - port: 16266
+      protocol: TCP
+      name: "zomboid-h"
+      targetPort: 16266
+    - port: 16267
+      protocol: TCP
+      name: "zomboid-i"
+      targetPort: 16267
+    - port: 16268
+      protocol: TCP
+      name: "zomboid-j"
+      targetPort: 16268
+    - port: 16269
+      protocol: TCP
+      name: "zomboid-k"
+      targetPort: 16269
+    - port: 16270
+      protocol: TCP
+      name: "zomboid-l"
+      targetPort: 16270
+    - port: 16271
+      protocol: TCP
+      name: "zomboid-m"
+      targetPort: 16271
+    - port: 16272
+      protocol: TCP
+      name: "zomboid-n"
+      targetPort: 16272
+    - port: 27015
+      protocol: TCP
+      name: "zomboid-o"
+      targetPort: 27015
+  selector:
+    app: zomboid

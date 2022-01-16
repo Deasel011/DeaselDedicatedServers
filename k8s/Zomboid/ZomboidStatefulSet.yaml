@@ -1,0 +1,81 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zomboid
+spec:
+  selector:
+    matchLabels:
+      app: zomboid
+  serviceName: "zomboid"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zomboid
+    spec:
+      containers:
+        - name: zomboid
+          image: afey/zomboid
+          env:
+            - name: SERVER_NAME
+              value: "<servername>"
+            - name: ADMIN_PASSWORD
+              value: "<adminpassword>"
+          ports:
+            - containerPort: 8766
+              name: "zomboid-a"
+              protocol: UDP
+            - containerPort: 8767
+              name: "zomboid-b"
+              protocol: UDP
+            - containerPort: 16261
+              name: "zomboid-c"
+              protocol: UDP
+            - containerPort: 16262
+              name: "zomboid-d"
+              protocol: TCP
+            - containerPort: 16263
+              name: "zomboid-e"
+              protocol: TCP
+            - containerPort: 16264
+              name: "zomboid-f"
+              protocol: TCP
+            - containerPort: 16265
+              name: "zomboid-g"
+              protocol: TCP
+            - containerPort: 16266
+              name: "zomboid-h"
+              protocol: TCP
+            - containerPort: 16267
+              name: "zomboid-i"
+              protocol: TCP
+            - containerPort: 16268
+              name: "zomboid-j"
+              protocol: TCP
+            - containerPort: 16269
+              name: "zomboid-k"
+              protocol: TCP
+            - containerPort: 16270
+              name: "zomboid-l"
+              protocol: TCP
+            - containerPort: 16271
+              name: "zomboid-m"
+              protocol: TCP
+            - containerPort: 16272
+              name: "zomboid-n"
+              protocol: TCP
+            - containerPort: 27015
+              name: "zomboid-o"
+              protocol: TCP
+          command: ["sh","-c","chown -R a+rwX /server-data"]
+          volumeMounts:
+            - name: zomboid-data
+              mountPath: /server-data
+  volumeClaimTemplates:
+    - metadata:
+        name: zomboid-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 50Gi
